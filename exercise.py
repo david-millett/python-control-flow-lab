@@ -181,23 +181,27 @@ weather_advice()
 def determine_season():
     # Your control flow logic goes here
     month = input('Enter the month of the year (Jan - Dec):').lower()
-    day = int(input('Enter the day of the month:'))
+    day = input('Enter the day of the month:')
 
     always_winter = ['jan', 'feb']
     always_spring = ['apr', 'may']
     always_summer = ['jul', 'aug']
     always_fall = ['oct', 'nov']
 
-    if month == 'dec' and day >= 21 or month == 'mar' and day <= 19 or month in always_winter:
-        season = 'winter'
-    elif month == 'mar' and day >= 20 or month == 'jun' and day <= 20 or month in always_spring:
-        season = 'spring'
-    elif month == 'jun' and day >= 21 or month == 'sep' and day <= 21 or month in always_summer:
-        season = 'summer'
-    elif month == 'sep' and day >= 22 or month == 'dec' and day <= 20 or month in always_fall:
-        season = 'fall'
+    try:
+        day = int(day)
+        if month == 'dec' and day >= 21 or month == 'mar' and day <= 19 or month in always_winter:
+            season = 'winter'
+        elif month == 'mar' and day >= 20 or month == 'jun' and day <= 20 or month in always_spring:
+            season = 'spring'
+        elif month == 'jun' and day >= 21 or month == 'sep' and day <= 21 or month in always_summer:
+            season = 'summer'
+        elif month == 'sep' and day >= 22 or month == 'dec' and day <= 20 or month in always_fall:
+            season = 'fall'
+        print(f'{month} {day} is in {season}')
+    except:
+        print('Please enter a valid month and day.')
     
-    print(f'{month} {day} is in {season}')
 
 # Call the function
 determine_season()
